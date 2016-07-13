@@ -8,8 +8,8 @@ const screenDeep = (user, data, returnEmpty) => {
 
   // check if the user can even see the doc
   if (isObject(data) && !isArray(data)) {
-    if (data.authorized &&
-      !data.authorized('read', user)) {
+    if (data === null || (data.authorized &&
+      !data.authorized('read', user))) {
       if (returnEmpty) return
       return isArray(data) ? [] : {}
     }
